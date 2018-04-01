@@ -1,0 +1,25 @@
+<mat-card class="notes-wrap">
+  <header>
+    <button mat-raised-button color="primary" routerLink="add">add new note</button>
+      <mat-form-field class="search-input">
+      <form [formGroup]="search">
+         <input #searchInput formControlName="searchInput" matInput type="text" placeholder="Search by keywords" />
+      </form>
+      </mat-form-field>
+  </header>
+  <main *ngIf="(notes | async).length > 0; else noNotes">
+    <div class="list">
+      <ul>
+        <li *ngFor="let note of (notes | async)" (click)="selectNote(note)" [class.active]="(selectedNote | async ) && (note.id === (selectedNote | async).id)">{{note.caption}}</li>
+      </ul>
+    </div>
+    <div class="note">
+      <app-note [note]="(selectedNote | async)" *ngIf="(selectedNote | async); else noNoteSelected" (onDelete)="selectedNote.next(null);"></app-note>
+      <ng-template #noNoteSelected>
+        <i style="text-align: center; width: 100%; display: block">No note selected</i>
+      </ng-template>
+    </div>
+  </main>
+  <ng-template #noNotes><i style="text-align: center; width: 100%; display: block; margin-top: 50px;">You have no notes yet. Wish to <a routerLink="add">create one</a>?</i></ng-template>
+</mat-card>
+<router-outlet></router-outlet>

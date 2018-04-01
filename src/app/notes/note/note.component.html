@@ -1,0 +1,29 @@
+<div class="note-wrap">
+  <form [formGroup]="noteForm">
+    <h3>{{ mode === 'create' ? 'Create new ' : 'Edit '}}note</h3>
+    <mat-form-field>
+      <input matInput type="text" formControlName="caption" placeholder="Caption">
+      <mat-error *ngIf="noteForm.controls.caption.hasError('required')">Caption is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="text" placeholder="Text"></textarea>
+      <mat-error *ngIf="noteForm.controls.caption.hasError('required')">Note text is required.</mat-error>
+    </mat-form-field>
+    <div class="bottom-panel">
+      <mat-form-field class="keywords">
+        <input matInput formControlName="keywords" type="text" placeholder="Keywords" />
+      </mat-form-field>
+      <mat-form-field>
+        <input (click)="openDatePicker()" matInput readonly formControlName="date" [matDatepicker]="datepicker" placeholder="Date" />
+        <mat-icon matSuffix>event</mat-icon>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="actions">
+      <button type="submit" *ngIf="mode === 'create'" [disabled]="noteForm.invalid" mat-raised-button color="primary" (click)="createNote()">Save</button>
+      <button type="button" *ngIf="mode === 'create'" mat-raised-button (click)="cancel()">Cancel</button>
+      <button type="submit" *ngIf="mode === 'edit'" [disabled]="noteForm.invalid" mat-raised-button color="primary" (click)="saveChanges()">Save</button>
+      <button type="button" *ngIf="mode === 'edit'" mat-raised-button color="warn" (click)="deleteNote()">Delete</button>
+    </div>
+  </form>
+</div>

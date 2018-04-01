@@ -1,0 +1,25 @@
+.note-wrap {
+  form {
+    > mat-form-field {
+      width: 100%;
+    }
+    textarea {
+      height: 150px;
+    }
+  }
+  .bottom-panel {
+    //display: flex;
+    .keywords {
+      float: left;
+      width: 70%;
+      margin-right: 5%;
+    }
+    mat-form-field {
+      float: left;
+      width: 25%;
+    }
+  }
+  .actions {
+    text-align: right;
+  }
+}

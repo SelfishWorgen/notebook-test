@@ -1,0 +1,17 @@
+@import "~../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+body, html {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+button {
+  text-transform: uppercase;
+}
