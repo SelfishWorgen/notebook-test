@@ -1,6 +1,6 @@
 import { NoteModel } from "../models/NoteModel";
 
-export class Note {
+export class Note implements NoteModel{
   readonly id: number;
   date: Date;
   caption: string;
